@@ -1,0 +1,74 @@
+﻿@model MovieApi.Models.Movie
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.year)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.plot)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.plot)
+        </dd>
+    </dl>
+</div>
+<div>
+<table>
+    <tr>
+        <td>Actor Id</td>
+        <td>Actor Name</td>
+        <td>Character Name</td>
+    </tr>
+    @foreach (var item in Model.cast)
+    {
+        <tr class="row">
+            <td>
+                @item.actor_id
+            </td>
+        </tr>
+        <tr class="row">
+            <td>
+                @item.actor
+            </td>
+        </tr>
+        <tr class="row">
+            <td>
+                @item.character
+            </td>
+        </tr>
+    }
+</table>
+</div>
+<div>
+    <img src="@Model.poster" alt="picture of Movie Poster"/>
+</div>
+<div>
+   <form method="post">
+       <div>
+           <label for="movieTitle">Enter A Movie Title</label>
+           <input type="text" name="movieTitle" value=""/>
+       </div>
+       <div>
+           <input type="submit" value="Submit" class="index"/>
+       </div>
+   </form>
+</div>
